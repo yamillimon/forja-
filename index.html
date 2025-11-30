@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>FORJA - Guantes de Boxeo</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+    color:#fff;
+    background:url('fondo.jpg') no-repeat center center fixed;
+    background-size:cover;
+    backdrop-filter: blur(0px);
+}
+header{
+    padding:25px;
+    text-align:center;
+    font-size:40px;
+    font-weight:bold;
+    background:rgba(0,0,0,0.6);
+}
+.product, #carrito, #checkout{
+    background:rgba(0,0,0,0.7);
+    margin:20px;
+    padding:20px;
+    border-radius:15px;
+}
+.product img{
+    width:95%;
+    max-width:420px;
+    border-radius:12px;
+}
+.price{font-size:30px;color:#23d423;margin-top:10px;}
+button{
+    padding:15px;
+    width:90%;
+    max-width:400px;
+    font-size:20px;
+    background:#2079ff;
+    border:none;
+    border-radius:8px;
+    color:white;
+    margin-top:15px;
+}
+.qtyBox{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:25px;
+    font-size:28px;
+}
+.qtyBox button{
+    width:55px;height:55px;border-radius:50%;font-size:26px;background:#444;color:white;border:none;
+}
+.deleteBtn{background:#ff4040!important;}
+</style>
+</head>
+<body>
+
+<header>FORJA</header>
+
+<div class="product">
+    <img src="product1.jpg">
+    <h2>Guantes FORJA PRO</h2>
+    <div class="price">$120.000</div>
+    <button onclick="mostrarCarrito()">AGREGAR AL CARRITO</button>
+</div>
+
+<div id="carrito" style="display:none">
+    <h2>Carrito</h2>
+    <div class="qtyBox">
+        <button onclick="restar()">-</button>
+        <span id="cant">1</span>
+        <button onclick="sumar()">+</button>
+    </div>
+    <h3>Total: $<span id="total">120000</span></h3>
+    <button onclick="mostrarCheckout()">FINALIZAR COMPRA</button>
+    <button class="deleteBtn" onclick="eliminarProducto()">ELIMINAR PRODUCTO</button>
+</div>
+
+<div id="checkout" style="display:none">
+    <h2>Checkout</h2>
+    <input placeholder="Nombre completo">
+    <input placeholder="Email">
+    <input placeholder="Teléfono">
+    <input placeholder="Dirección">
+    <button onclick="pagar()">PAGAR AHORA</button>
+</div>
+
+<script>
+let cant = 1;
+let precio = 120000;
+
+function mostrarCarrito(){
+    document.querySelector("#carrito").style.display="block";
+}
+function sumar(){cant++;actualizar();}
+function restar(){if(cant>1){cant--;actualizar();}}
+function actualizar(){
+    document.querySelector("#cant").textContent=cant;
+    document.querySelector("#total").textContent=cant*precio;
+}
+function mostrarCheckout(){
+    document.querySelector("#checkout").style.display="block";
+}
+function pagar(){
+    alert("Pago simulado aprobado");
+}
+function eliminarProducto(){
+    cant=0;
+    document.querySelector("#carrito").style.display="none";
+    alert("Producto eliminado");
+}
+</script>
+
+</body>
+</html>
